@@ -1,0 +1,11 @@
+<h1>Lista ordini</h1><br>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let o of ordini">
+
+    <p mat-line>N° ordine: {{o}}</p>
+    <p mat-line >Stato ordine: {{toValue(o.stato)}}</p>
+    <p mat-line>Totale: {{o.totale}} € </p>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-nav-list>

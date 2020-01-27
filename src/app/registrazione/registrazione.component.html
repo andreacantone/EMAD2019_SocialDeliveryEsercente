@@ -1,0 +1,50 @@
+<h1>Registrazione utente</h1><br>
+
+<div class="col col-md-8">
+
+  <form class="create-form" [formGroup]="form" novalidate (ngSubmit)="onSubmit(form.value)">
+
+    <div class="form-group">
+        <label>Nome</label>
+        <input type='text' class="form-control" formControlName="nome">
+      <ng-container *ngFor="let validation of validation_messages.nome">
+        <mat-error  *ngIf="form.get('nome').hasError(validation.type) && (form.get('nome').dirty || form.get('nome').touched)">{{validation.message}}</mat-error>
+      </ng-container>
+    </div>
+
+    <div class="form-group">
+      <label>Cognome</label>
+      <input type='text' class="form-control" formControlName="cognome">
+    <ng-container *ngFor="let validation of validation_messages.cognome">
+      <mat-error  *ngIf="form.get('cognome').hasError(validation.type) && (form.get('cognome').dirty || form.get('cognome').touched)">{{validation.message}}</mat-error>
+    </ng-container>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type='text' class="form-control" formControlName="email">
+  <ng-container *ngFor="let validation of validation_messages.email">
+    <mat-error  *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">{{validation.message}}</mat-error>
+  </ng-container>
+</div>
+
+
+<div class="form-group">
+  <label>Password</label>
+  <input type='text' class="form-control" formControlName="password">
+<ng-container *ngFor="let validation of validation_messages.password">
+  <mat-error  *ngIf="form.get('password').hasError(validation.type) && (form.get('password').dirty || form.get('password').touched)">{{validation.message}}</mat-error>
+</ng-container>
+</div>
+
+
+    <div class="row submit-button-container">
+      <div class="col-md-4">
+        <button mat-raised-button class="text-themecolor m-b-0" color="primary" type="submit" >Aggiungi</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+

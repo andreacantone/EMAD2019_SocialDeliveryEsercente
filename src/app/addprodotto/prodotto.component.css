@@ -1,0 +1,14 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group > * {
+  width: 70%;
+}
+
+.mat-error {
+  color: red;
+}
+
+

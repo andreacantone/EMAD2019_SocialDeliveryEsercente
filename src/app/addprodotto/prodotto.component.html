@@ -1,0 +1,53 @@
+      <div class="col col-md-8">
+        <h1>Aggiungi prodotto</h1><br>
+        <form class="create-form" [formGroup]="form" novalidate (ngSubmit)="onSubmit(form.value)">
+
+          <div class="form-group">
+              <label>Nome</label>
+              <input type='text' class="form-control" formControlName="nome">
+            <ng-container *ngFor="let validation of validation_messages.nome">
+              <mat-error  *ngIf="form.get('nome').hasError(validation.type) && (form.get('nome').dirty || form.get('nome').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <label>Descrizione</label>
+              <textarea type='text'  class="form-control" formControlName="descrizione"></textarea>
+            <ng-container *ngFor="let validation of validation_messages.descrizione">
+              <mat-error *ngIf="form.get('descrizione').hasError(validation.type) && (form.get('descrizione').dirty || form.get('descrizione').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+              <label>Prezzo</label>
+              <input type="number" class="form-control" formControlName="prezzo">
+            <ng-container *ngFor="let validation of validation_messages.prezzo">
+              <mat-error *ngIf="form.get('prezzo').hasError(validation.type) && (form.get('prezzo').dirty || form.get('prezzo').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <label>Quantità</label>
+              <input type='number' class="form-control" formControlName="quantita">
+            <ng-container *ngFor="let validation of validation_messages.quantita">
+              <mat-error *ngIf="form.get('quantita').hasError(validation.type) && (form.get('quantita').dirty || form.get('quantita').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="form-group">
+            <label>Mezzo di trasporto</label>
+              <input type='text'  placeholder="Auto, Camion, Motorino" class="form-control" formControlName="mezzo">
+            <ng-container *ngFor="let validation of validation_messages.mezzo">
+              <mat-error *ngIf="form.get('mezzo').hasError(validation.type) && (form.get('mezzo').dirty || form.get('mezzo').touched)">{{validation.message}}</mat-error>
+            </ng-container>
+          </div>
+
+          <div class="row submit-button-container">
+            <div class="col-md-4">
+              <button mat-raised-button class="text-themecolor m-b-0" color="primary" type="submit" >Aggiungi</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
