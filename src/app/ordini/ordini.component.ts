@@ -12,7 +12,7 @@ import { OrdineService } from '../services/ordine.service';
 })
 
 export class OrdiniComponent implements OnInit {
-
+  numero_ordine = 0;
   ordini: Ordine[] = [];
   negozioID: string = 'KY13Jqlma2lYfdw34NYj';
 
@@ -25,15 +25,19 @@ export class OrdiniComponent implements OnInit {
 
   ngOnInit() {
 
-    this.ordineService.getOrdini();
+    this.ordineService.getOrdini().subscribe(res => {
+      res.forEach(element => {
+        if(element.id_negozio == this.negozioID){
+          this.ordini.push(element);
+          this.numero_ordine = this.numero_ordine+1;
+        }
+      });
+    });
 
 }
 
 
-
-
   toValue(key: number): string {
-    console.log('OK');
     if (key === 0) {
       return 'PARTITO';
     } else if (key === 1) {
