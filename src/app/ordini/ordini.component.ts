@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Ordine } from '../interface/ordine';
 import { NegozioService } from '../services/negozio.service';
 import { OrdineService } from '../services/ordine.service';
+import { NavExtrasService } from '../interface/NavExtraService';
+import { Prodotto } from '../interface/prodotto';
 
 
 @Component({
@@ -14,13 +16,21 @@ import { OrdineService } from '../services/ordine.service';
 export class OrdiniComponent implements OnInit {
   numero_ordine = 0;
   ordini: Ordine[] = [];
+  prodotto: Prodotto[] = [];
   negozioID: string = 'KY13Jqlma2lYfdw34NYj';
 
-  constructor(private route: ActivatedRoute, private ordineService: OrdineService) { }
+  constructor(private route: ActivatedRoute, private ordineService: OrdineService, private navExtra: NavExtrasService,  private router: Router) { }
 
 
   listElementClicked(ordine: Ordine) {
+    console.log("click");
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
 
+        ordini2:ordine.prodotti
+        }
+    };
+    this.router.navigate(['/dettagli'], navigationExtras);
   }
 
   ngOnInit() {
@@ -49,6 +59,7 @@ export class OrdiniComponent implements OnInit {
   getNegozioName(idNegozio: string) {
 
   }
+
 
 
 }

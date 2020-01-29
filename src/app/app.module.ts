@@ -27,6 +27,7 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { LoginComponent } from './login/login.component';
 import { OrdiniComponent } from './ordini/ordini.component';
+import { DettagliComponent } from './dettagli/dettagli.component';
 
 
 
@@ -46,7 +47,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         SpinnerComponent,
         RegistrazioneComponent,
         LoginComponent,
-        OrdiniComponent
+        OrdiniComponent,
+        DettagliComponent
 
     ],
     imports: [

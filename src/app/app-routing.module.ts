@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { FullComponent } from './layouts/full/full.component';
 import { ProdottoComponent } from './addprodotto/prodotto.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { OrdiniComponent } from './ordini/ordini.component';
+import { DettagliComponent } from './dettagli/dettagli.component';
 
 export const Approutes: Routes = [
     {
@@ -33,7 +33,11 @@ export const Approutes: Routes = [
       {
         path: 'ordini',
         component: OrdiniComponent
-    }
+    },
+    {
+      path: 'dettagli',
+      component: DettagliComponent
+  },
         ]
     },
     {

@@ -13,6 +13,7 @@ import { ProdottoService } from '../services/prodotto.service';
 export class ProdottoComponent implements OnInit {
 
   form: FormGroup;
+  path = '../assets/images/big/';
 
 
   validation_messages = {
@@ -41,6 +42,7 @@ export class ProdottoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.createForm();
   }
 
@@ -65,7 +67,10 @@ export class ProdottoComponent implements OnInit {
     });
   }
 
+
+
   onSubmit(value) {
+    value.immagine = this.path + value.nome + '.jpg';
     this.prodottoService.addProdotto(value)
     .then(
       res => {

@@ -1,7 +1,7 @@
 <h1>Lista ordini</h1><br>
 
 <mat-nav-list>
-  <mat-list-item *ngFor="let o of ordini">
+  <mat-list-item *ngFor="let o of ordini" (click)=listElementClicked(o)>
 
     <p mat-line> Ordine n°: {{numero_ordine}}</p>
     <p mat-line>Stato ordine: {{toValue(o.stato)}}</p>

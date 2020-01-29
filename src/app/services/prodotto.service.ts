@@ -41,7 +41,8 @@ export class ProdottoService {
       descrizione: prodotto.descrizione,
       prezzo: prodotto.prezzo,
       quantita: prodotto.quantita,
-      mezzo: prodotto.mezzo
+      mezzo: prodotto.mezzo,
+      immagine: prodotto.immagine
     });
   }
 
