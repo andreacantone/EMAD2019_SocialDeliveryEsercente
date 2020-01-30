@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -73,9 +73,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ],
     providers: [
         {
+
             provide: PERFECT_SCROLLBAR_CONFIG,
             useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-        }
+        },
+        AngularFireAuth
     ],
 
     bootstrap: [AppComponent]

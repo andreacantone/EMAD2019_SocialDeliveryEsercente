@@ -9,6 +9,13 @@
     overflow: hidden;
 
 }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media screen and (max-width: 992px) {
     .main-container {
         margin-left: 0px !important;

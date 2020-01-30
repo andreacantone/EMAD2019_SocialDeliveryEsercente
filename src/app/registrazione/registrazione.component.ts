@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { EsercenteService } from '../services/esercente.service';
+import { NegozioService } from '../services/negozio.service';
+import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
   templateUrl: './registrazione.component.html',
@@ -13,7 +15,6 @@ import { EsercenteService } from '../services/esercente.service';
 export class RegistrazioneComponent implements OnInit {
 
   form: FormGroup;
-
 
   validation_messages = {
    'nome': [
@@ -32,10 +33,14 @@ export class RegistrazioneComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private fb2: FormBuilder,
     public dialog: MatDialog,
     private router: Router,
-    public esercenteService: EsercenteService
+    public esercenteService: EsercenteService,
+    private auth: AuthService
   ) { }
+  email: string = '';
+  password: string = '';
 
   ngOnInit() {
     this.createForm();
@@ -51,6 +56,8 @@ export class RegistrazioneComponent implements OnInit {
   }
 
 
+
+
   resetFields() {
     this.form = this.fb.group({
       nome: new FormControl('', Validators.required),
@@ -61,13 +68,15 @@ export class RegistrazioneComponent implements OnInit {
   }
 
   onSubmit(value) {
+    this.auth.register(value.email, value.password)
+    .then(()=>
     this.esercenteService.addUtente(value)
     .then(
       res => {
         this.resetFields();
         this.router.navigate(['/dashboard']);
       }
-    );
+    ));
   }
 
 }
