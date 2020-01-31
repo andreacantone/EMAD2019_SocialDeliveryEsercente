@@ -8,6 +8,7 @@ import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
   templateUrl: './registrazione.component.html',
+  styleUrls: ['./registrazione.component.css']
 
 
 })
@@ -18,16 +19,16 @@ export class RegistrazioneComponent implements OnInit {
 
   validation_messages = {
    'nome': [
-     { type: 'required', message: 'Nome è obbligatorio.' }
+     { type: 'required', message: 'Il campo Nome è obbligatorio.' }
    ],
    'cognome': [
-     { type: 'required', message: 'Cognome è obbligatorio.' }
+     { type: 'required', message: 'Il campo Cognome è obbligatorio.' }
    ],
    'email': [
-     { type: 'required', message: 'Email è obbligatorio.' },
+     { type: 'required', message: 'Il campo Email è obbligatorio.' },
    ],
    'password': [
-    { type: 'required', message: 'Password è obbligatoria.' },
+    { type: 'required', message: 'Il campo Password è obbligatorio.' },
   ],
  };
 

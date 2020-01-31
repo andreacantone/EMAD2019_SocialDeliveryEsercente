@@ -16,21 +16,22 @@ export class ProdottoComponent implements OnInit {
   path = '../assets/images/big/';
 
 
+
   validation_messages = {
    'nome': [
-     { type: 'required', message: 'Nome è obbligatorio.' }
+     { type: 'required', message: 'Il campo Nome è obbligatorio.' }
    ],
    'descrizione': [
-     { type: 'required', message: 'Descrizione è obbligatorio.' }
+     { type: 'required', message: 'Il campo Descrizione è obbligatorio.' }
    ],
    'prezzo': [
-     { type: 'required', message: 'Prezzo è obbligatorio.' },
+     { type: 'required', message: 'Il campo Prezzo è obbligatorio.' },
    ],
    'quantita': [
-    { type: 'required', message: 'Quantita è obbligatorio.' },
+    { type: 'required', message: 'Il campo Quantita è obbligatorio.' },
   ],
   'mezzo': [
-    { type: 'required', message: 'Mezzo è obbligatorio.' },
+    { type: 'required', message: 'Il campo Mezzo è obbligatorio.' },
   ]
  };
 

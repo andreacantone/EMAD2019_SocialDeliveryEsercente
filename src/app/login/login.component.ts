@@ -7,6 +7,7 @@ import { ProdottoService } from '../services/prodotto.service';
 
 @Component({
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 
 
 })
@@ -19,6 +20,15 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
 
+  };
+
+  validation_messages = {
+    'email': [
+      { type: 'required', message: 'Il campo Email è obbligatorio.' },
+    ],
+    'password': [
+     { type: 'required', message: 'Il campo Password è obbligatorio.' },
+   ],
   };
 
   constructor(
@@ -40,6 +50,13 @@ export class LoginComponent implements OnInit {
     });
 
   }
+
+  goToRegister(){
+
+    this.router.navigate(['/registrazione']);
+
+  }
+
 
   login(){
     console.log(this.user.email);

@@ -1,30 +1,40 @@
- <h1>Login to Your Account</h1><br>
+<img src="..\assets\images\logo.png" class="center" width="82" height="82">
+<h2 style="color:black" align="center">Social Delivery</h2>
 
  <div class="col col-md-8">
 
   <form class="list-form" [formGroup]="form">
 
     <div class="form-group">
-        <label>Nome</label>
-        <input type='text'  formControlName="email" [(ngModel)]='user.email'>
-
+        <label>Email</label>
+        <input type='text'  class="form-control" formControlName="email" [(ngModel)]='user.email'>
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <mat-error  *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">{{validation.message}}</mat-error>
+        </ng-container>
     </div>
 
     <div class="form-group">
       <label>Password</label>
-      <input type='text' class="form-control" formControlName="password" [(ngModel)]='user.password'>
-
+      <input type='text'  class="form-control"  formControlName="password" [(ngModel)]='user.password'>
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <mat-error  *ngIf="form.get('password').hasError(validation.type) && (form.get('password').dirty || form.get('password').touched)">{{validation.message}}</mat-error>
+      </ng-container>
   </div>
 
 
 </form>
-  <div color="dark">
+  <p align='center'>
     <button icon-left size="medium" expand="full" shape="round" color="dark" (click)="login()">
-
-      Signin
+      Accedi
     </button>
 
-
+    <div class="text-center">
+      <span (click)="goToRegister()" class="paz" tappable>
+        <p color="dark" class="text08">
+          Non sei registrato? <strong>Registrati</strong>
+        </p>
+      </span>
+    </div>
 
 </div>
 
