@@ -79,6 +79,7 @@ export class ProdottoComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       }
    );
+
   }
 
 }

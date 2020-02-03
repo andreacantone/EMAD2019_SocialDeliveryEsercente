@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
 import { EsercenteService } from '../services/esercente.service';
 import { ProdottoService } from '../services/prodotto.service';
@@ -15,6 +15,7 @@ import { ProdottoService } from '../services/prodotto.service';
 export class LoginComponent implements OnInit {
 
   public form : FormGroup;
+
 
   user = {
     email: '',
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  goToRegister(){
+  goToRegister() {
 
     this.router.navigate(['/registrazione']);
 
@@ -59,13 +60,19 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    console.log(this.user.email);
+
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+
+        utente:this.user.email
+        }
+    };
     this.auth.login(this.user.email,this.user.password)
     .then(() => {
       this.serve.getUtenti().subscribe(res => {
         res.forEach(element => {
           if(element.email == this.user.email) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/negozi'], navigationExtras);
           }
         });
       });

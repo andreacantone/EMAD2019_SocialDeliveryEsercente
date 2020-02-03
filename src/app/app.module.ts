@@ -28,8 +28,8 @@ import { RegistrazioneComponent } from './registrazione/registrazione.component'
 import { LoginComponent } from './login/login.component';
 import { OrdiniComponent } from './ordini/ordini.component';
 import { DettagliComponent } from './dettagli/dettagli.component';
-
-
+import { NegoziComponent } from './negozi/negozi.component';
+import { AddNegozioComponent } from './addnegozio/addnegozio.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true,
@@ -48,7 +48,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         RegistrazioneComponent,
         LoginComponent,
         OrdiniComponent,
-        DettagliComponent
+        DettagliComponent,
+        NegoziComponent,
+        AddNegozioComponent
 
     ],
     imports: [

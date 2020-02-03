@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { OrdiniComponent } from './ordini/ordini.component';
 import { DettagliComponent } from './dettagli/dettagli.component';
+import { NegoziComponent } from './negozi/negozi.component';
+import { AddNegozioComponent } from './addnegozio/addnegozio.component';
 
 export const Approutes: Routes = [
     {
@@ -39,6 +41,14 @@ export const Approutes: Routes = [
   {
     path: 'registrazione',
     component: RegistrazioneComponent
+},
+{
+  path: 'negozi',
+  component: NegoziComponent
+},
+{
+  path: 'addnegozio',
+  component: AddNegozioComponent
 },
     {
         path: '**',

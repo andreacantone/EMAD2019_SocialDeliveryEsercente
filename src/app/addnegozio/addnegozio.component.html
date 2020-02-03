@@ -1,0 +1,30 @@
+<div class="col col-md-8">
+  <h1>Aggiungi negozio</h1><br>
+  <form class="create-form" [formGroup]="form" novalidate (ngSubmit)="onSubmit(form.value)">
+
+    <div class="form-group">
+        <label>Nome del negozio</label>
+        <input type='text' class="form-control" formControlName="nome">
+      <ng-container *ngFor="let validation of validation_messages.nome">
+        <mat-error  *ngIf="form.get('nome').hasError(validation.type) && (form.get('nome').dirty || form.get('nome').touched)">{{validation.message}}</mat-error>
+      </ng-container>
+    </div>
+
+
+    <div class="form-group">
+      <label>Partita Iva</label>
+        <input type='text' class="form-control" formControlName="p_iva">
+      <ng-container *ngFor="let validation of validation_messages.p_iva">
+        <mat-error  *ngIf="form.get('p_iva').hasError(validation.type) && (form.get('p_iva').dirty || form.get('p_iva').touched)">{{validation.message}}</mat-error>
+      </ng-container>
+    </div>
+
+
+    <div class="row submit-button-container">
+      <div class="col-md-4">
+        <button mat-raised-button class="text-themecolor m-b-0" color="primary" type="submit" >Aggiungi</button>
+      </div>
+    </div>
+
+  </form>
+</div>

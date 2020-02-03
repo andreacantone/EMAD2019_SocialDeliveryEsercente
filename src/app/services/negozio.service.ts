@@ -3,6 +3,7 @@ import {Negozio} from '../interface/negozio';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Prodotto } from '../interface/prodotto';
 
 
 @Injectable({
@@ -47,6 +48,7 @@ export class NegozioService {
     return this.negozioCollection.add(negozio);
 
   }
+
 
   removeNegozio(id) {
     return this.negozioCollection.doc(id).delete();
