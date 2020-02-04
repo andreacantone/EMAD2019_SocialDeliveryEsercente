@@ -7,6 +7,7 @@ import { NavExtrasService } from '../interface/NavExtraService';
 import { Prodotto } from '../interface/prodotto';
 
 
+
 @Component({
 
   templateUrl: './ordini.component.html',
@@ -23,14 +24,8 @@ export class OrdiniComponent implements OnInit {
 
 
   listElementClicked(ordine: Ordine) {
-    console.log("click");
-    const navigationExtras: NavigationExtras = {
-      queryParams: {
-
-        ordini2:ordine.prodotti
-        }
-    };
-    this.router.navigate(['/dettagli'], navigationExtras);
+    this.navExtra.setProdotti(ordine.prodotti);
+    this.router.navigateByUrl('/dettagli');
   }
 
   ngOnInit() {

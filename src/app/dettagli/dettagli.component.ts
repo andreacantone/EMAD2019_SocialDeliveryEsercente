@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import {ProdottoService} from '../services/prodotto.service';
 import { Ordine } from '../interface/ordine';
 import { NavExtrasService } from '../interface/NavExtraService';
+import { ProdottoOrdine } from '../interface/prodotto_ordine';
 
 @Component({
   templateUrl: './dettagli.component.html'
@@ -16,7 +17,12 @@ export class DettagliComponent implements OnInit {
 
    }
 
-  prodotti: Prodotto[] = [];
+  prodOrdine: ProdottoOrdine = {
+    id:"",
+    quantita:0
+  };
+  prodotti: ProdottoOrdine[] = [];
+  prodottiDaCaricare: Prodotto[] = [];
   prodotto: Prodotto = {
     id:null,
     nome:null,
@@ -29,9 +35,14 @@ export class DettagliComponent implements OnInit {
   ngOnInit() {
 
     this.route.queryParams.subscribe( async params => {
-      this.prodotti.push(params['ordini2']);
-      console.log(this.prodotti[0]);
-     console.log(params[0]);
+      this.prodotti = this.navExtra.getProdotti();
+      for(let prod of this.prodotti) {
+        this.prodService.getProdotto(prod.id).subscribe(res => {
+          this.prodotto = res;
+          this.prodotto.id = prod.id;
+          this.prodottiDaCaricare.push(this.prodotto);
+        });
+      }
       });
 
 }

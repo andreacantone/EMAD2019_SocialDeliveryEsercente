@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { ProdottoOrdine } from './prodotto_ordine';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +8,17 @@ import { Injectable } from '@angular/core';
 export class NavExtrasService {
 
     extras: any;
+    prodotti: ProdottoOrdine[];
 
       constructor() { }
+
+      public setProdotti(prodotti) {
+        this.prodotti = prodotti;
+      }
+
+      public getProdotti() {
+        return this.prodotti;
+      }
 
       public setExtras(data){
         this.extras = data;
