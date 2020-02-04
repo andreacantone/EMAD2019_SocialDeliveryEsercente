@@ -17,6 +17,7 @@ export class NegoziComponent implements OnInit {
   negozioID: string = 'KY13Jqlma2lYfdw34NYj';
   negozio: Negozio;
   private id;
+  private idN;
 
   constructor(private negozioService:NegozioService, private route: ActivatedRoute, private router: Router) {
 
@@ -47,12 +48,21 @@ export class NegoziComponent implements OnInit {
         utente:this.id
         }
     };
-    console.log(this.id);
     this.router.navigate(['/addnegozio'], navigationExtras);
 
   }
 
+  apriVetrina(idNegozio){
 
+    this.idN = idNegozio;
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+
+        id_negozio:this.idN
+        }
+    };
+    this.router.navigate(['/dashboard'], navigationExtras);
+  }
 
 
 
