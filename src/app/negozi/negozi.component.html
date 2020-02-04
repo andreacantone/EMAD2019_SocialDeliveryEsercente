@@ -8,9 +8,9 @@
           <div class="col-lg-2 col-md-6" *ngFor="let n of negozi">
               <!-- Card -->
               <div class="card">
-                <a href="/dashboard">
-                  <img class="card-img-top img-responsive" src="../assets/images/negozio.png" alt="Card image cap">
-                </a>
+
+                  <img class="card-img-top img-responsive" src="../assets/images/negozio.png" alt="Card image cap" (click)=apriVetrina(n.id)>
+
                   <div class="card-body">
                       <h4 class="card-title">{{n.nome}}</h4>
                   </div>
