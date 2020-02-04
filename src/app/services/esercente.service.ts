@@ -60,7 +60,7 @@ export class EsercenteService {
 
 
   addUtente(esercente: Esercente) {
-    return this.esercenteCollection.add({
+    return this.esercenteCollection.doc(esercente.email).set({
       nome: esercente.nome,
       cognome: esercente.cognome,
       email: esercente.email

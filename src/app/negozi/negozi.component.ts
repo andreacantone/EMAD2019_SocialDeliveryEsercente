@@ -30,14 +30,17 @@ export class NegoziComponent implements OnInit {
 
     this.negozioService.getNegozi().subscribe(res => {
       res.forEach(element => {
+        if(element.id_esercente == this.id){
         this.negozio = element;
         this.negozi.push(this.negozio);
+        }
       });
     });
   }
 
 
   aggiungiNegozio(){
+
     const navigationExtras: NavigationExtras = {
       queryParams: {
 
@@ -48,6 +51,9 @@ export class NegoziComponent implements OnInit {
     this.router.navigate(['/addnegozio'], navigationExtras);
 
   }
+
+
+
 
 
 }

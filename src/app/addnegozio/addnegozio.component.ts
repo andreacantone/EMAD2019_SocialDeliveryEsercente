@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NegozioService } from '../services/negozio.service';
 
 @Component({
@@ -58,12 +58,18 @@ export class AddNegozioComponent implements OnInit {
 
 
   onSubmit(value) {
+     const navigationExtras: NavigationExtras = {
+      queryParams: {
+
+        utente:this.id
+        }
+    };
     value.id_esercente = this.id;
     this.negozioService.addNegozio(value)
     .then(
       res => {
         this.resetFields();
-        this.router.navigate(['/negozi']);
+        this.router.navigate(['/negozi'],navigationExtras);
       }
    );
 

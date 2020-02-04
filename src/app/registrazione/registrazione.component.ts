@@ -34,7 +34,6 @@ export class RegistrazioneComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private fb2: FormBuilder,
     public dialog: MatDialog,
     private router: Router,
     public esercenteService: EsercenteService,

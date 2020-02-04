@@ -29,17 +29,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-/*
-  getProducts(products: [string]) {
-    for (let id of products) {
-      this.prodService.getProdotto(id).subscribe(res => {
-        this.prodotto = res;
-        this.prodotto.nome = id;
-        this.products.push(this.prodotto);
-      });
-    }
-  }
-*/
+
 
 
   deleteProduct(id) {
