@@ -50,6 +50,7 @@ export class NegozioService {
   }
 
 
+
   removeNegozio(id) {
     return this.negozioCollection.doc(id).delete();
   }

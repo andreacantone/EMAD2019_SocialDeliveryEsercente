@@ -1,1 +1,6 @@
-<p> {{prodotto.nome}}</p>
+<h1>Dettaglio ordine </h1><br>
+<p>I prodotti inclusi nell'ordine sono: </p>
+<div *ngFor="let n of prodottiDaCaricare">
+<p> - {{n.nome}}</p>
+</div>
+

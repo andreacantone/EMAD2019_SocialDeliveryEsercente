@@ -47,14 +47,7 @@ export class DettagliComponent implements OnInit {
 
 }
 
-     /*
-      const id = params['ordineID'];
-      this.prodService.getAllProdotti().subscribe(res => {
-        console.log(res);
-      })
-    });
-  }
-*/
+
   editButtonPressed(){
     this.goToAddProductForm();
   }

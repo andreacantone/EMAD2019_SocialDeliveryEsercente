@@ -75,6 +75,7 @@ export class ProdottoComponent implements OnInit {
     this.prodottoService.addProdotto(value)
     .then(
       res => {
+        console.log(res.id);
         this.resetFields();
         this.router.navigate(['/dashboard']);
       }

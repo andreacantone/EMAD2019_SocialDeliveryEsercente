@@ -1,5 +1,7 @@
-<div class="col col-md-8">
-  <h1>Aggiungi negozio</h1><br>
+<h1>Aggiungi negozi</h1><br>
+
+  <div align="center">
+    <div class="col col-md-8">
   <form class="create-form" [formGroup]="form" novalidate (ngSubmit)="onSubmit(form.value)">
 
     <div class="form-group">
@@ -20,11 +22,12 @@
     </div>
 
 
-    <div class="row submit-button-container">
+    <div align='center'>
       <div class="col-md-4">
         <button mat-raised-button class="text-themecolor m-b-0" color="primary" type="submit" >Aggiungi</button>
       </div>
     </div>
 
   </form>
+</div>
 </div>
