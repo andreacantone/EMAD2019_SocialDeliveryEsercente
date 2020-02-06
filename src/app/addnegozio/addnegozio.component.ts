@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { NegozioService } from '../services/negozio.service';
+import {Location} from '@angular/common';
 
 @Component({
   templateUrl: './addnegozio.component.html',
@@ -28,7 +29,8 @@ export class AddNegozioComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     public negozioService: NegozioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -69,7 +71,7 @@ export class AddNegozioComponent implements OnInit {
     .then(
       res => {
         this.resetFields();
-        this.router.navigate(['/negozi'],navigationExtras);
+        this._location.back();
       }
    );
 

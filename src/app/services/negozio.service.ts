@@ -40,6 +40,10 @@ export class NegozioService {
     return this.negozioCollection.doc<Negozio>(id).valueChanges();
   }
 
+  getNegozioNoSubscribe(id) {
+    return this.negozioCollection.doc(id);
+  }
+
   updateNegozio(negozio: Negozio, id: string) {
     return this.negozioCollection.doc(id).update(negozio);
   }
@@ -49,7 +53,9 @@ export class NegozioService {
 
   }
 
-
+  updateProdotti(idNegozio: string, prodotti: string[]) {
+    this.negozioCollection.doc(idNegozio).update({prodotti: prodotti});
+  }
 
   removeNegozio(id) {
     return this.negozioCollection.doc(id).delete();

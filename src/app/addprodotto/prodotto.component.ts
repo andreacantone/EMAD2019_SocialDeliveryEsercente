@@ -3,6 +3,12 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { ProdottoService } from '../services/prodotto.service';
+import { NavExtrasService } from '../interface/NavExtraService';
+import { NegozioService } from '../services/negozio.service';
+import { Prodotto } from '../interface/prodotto';
+import 'rxjs/add/operator/toPromise';
+import { Negozio } from '../interface/negozio';
+import {Location} from '@angular/common';
 
 @Component({
   templateUrl: './prodotto.component.html',
@@ -14,7 +20,7 @@ export class ProdottoComponent implements OnInit {
 
   form: FormGroup;
   path = '../assets/images/big/';
-
+  idNegozio = '';
 
 
   validation_messages = {
@@ -39,11 +45,14 @@ export class ProdottoComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog,
     private router: Router,
-    public prodottoService: ProdottoService
+    public prodottoService: ProdottoService,
+    private navExtra: NavExtrasService,
+    public negozioService: NegozioService,
+    private _location: Location
   ) { }
 
   ngOnInit() {
-
+    this.idNegozio = this.navExtra.getNegozio();
     this.createForm();
   }
 
@@ -75,9 +84,20 @@ export class ProdottoComponent implements OnInit {
     this.prodottoService.addProdotto(value)
     .then(
       res => {
+        this.negozioService.getNegozioNoSubscribe(this.idNegozio).get().toPromise()
+          .then(doc =>{
+            const negozio = doc.data();
+            let prodotti: string[] = negozio.prodotti;
+            if(prodotti == null)
+              prodotti = [];
+
+            prodotti.push(res.id);
+            this.negozioService.updateProdotti(this.idNegozio,prodotti);
+
+    })
         console.log(res.id);
         this.resetFields();
-        this.router.navigate(['/dashboard']);
+        this._location.back();
       }
    );
 

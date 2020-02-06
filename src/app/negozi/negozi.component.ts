@@ -5,13 +5,14 @@ import { Router } from '@angular/router';
 import { ProdottoService } from '../services/prodotto.service';
 import { Negozio } from '../interface/negozio';
 import { NegozioService } from '../services/negozio.service';
+import { NavExtrasService } from '../interface/NavExtraService';
 
 
 @Component({
   templateUrl: './negozi.component.html',
 })
 
-export class NegoziComponent implements OnInit {
+export class NegoziComponent implements OnInit{
   shop = '';
   negozi: Negozio[] = [];
   negozioID: string = 'KY13Jqlma2lYfdw34NYj';
@@ -19,11 +20,12 @@ export class NegoziComponent implements OnInit {
   private id;
   private idN;
 
-  constructor(private negozioService:NegozioService, private route: ActivatedRoute, private router: Router) {
+  constructor(private negozioService:NegozioService, private route: ActivatedRoute, private router: Router,private navExtra: NavExtrasService) {
 
   }
 
   ngOnInit() {
+
     this.route.queryParams.subscribe(async params => {
        this.id = params['utente'];
 
@@ -32,12 +34,15 @@ export class NegoziComponent implements OnInit {
     this.negozioService.getNegozi().subscribe(res => {
       res.forEach(element => {
         if(element.id_esercente == this.id){
-        this.negozio = element;
-        this.negozi.push(this.negozio);
+          this.negozio = element;
+          this.negozi.push(this.negozio);
         }
       });
     });
   }
+
+
+
 
 
   aggiungiNegozio(){
@@ -53,8 +58,8 @@ export class NegoziComponent implements OnInit {
   }
 
   apriVetrina(idNegozio){
-
     this.idN = idNegozio;
+    this.navExtra.setNegozio(this.idN);
     const navigationExtras: NavigationExtras = {
       queryParams: {
 

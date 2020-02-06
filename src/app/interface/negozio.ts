@@ -7,5 +7,5 @@ export interface Negozio {
   id_esercente: string;
   id_indirizzo?: any;
   ordini?: Ordine[];
-  prodotti?: Prodotto[];
+  prodotti?: string[];
 }

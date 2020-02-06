@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ProdottoService } from '../services/prodotto.service';
 import { NegozioService } from '../services/negozio.service';
-
+import { NavExtrasService } from '../interface/NavExtraService';
 
 @Component({
   templateUrl: './dashboard.component.html',
@@ -16,20 +16,16 @@ export class DashboardComponent implements OnInit {
   negozioID: string = 'KY13Jqlma2lYfdw34NYj';
   prodotto: Prodotto;
   prodotto2:Prodotto;
-  prod:Prodotto;
-  prod2:Prodotto[]=[];
+  prod:string;
+  prod2:string[]=[];
   private id_negozio;
 
-  constructor(private nService:NegozioService, private prodService:ProdottoService, private route: ActivatedRoute, private router: Router) {
+  constructor(private nService:NegozioService, private prodService:ProdottoService, private route: ActivatedRoute, private router: Router,private navExtra: NavExtrasService) {
 
   }
 
   ngOnInit() {
-
-    this.route.queryParams.subscribe(async params => {
-      this.id_negozio = params['id_negozio'];
-    });
-
+    this.id_negozio = this.navExtra.getNegozio();
     this.nService.getNegozio(this.id_negozio).subscribe(element=>{
       element.prodotti.forEach(res=>{
         this.prod=res;

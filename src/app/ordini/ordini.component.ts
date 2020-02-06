@@ -18,7 +18,7 @@ export class OrdiniComponent implements OnInit {
   numero_ordine = 0;
   ordini: Ordine[] = [];
   prodotto: Prodotto[] = [];
-  negozioID: string = 'KY13Jqlma2lYfdw34NYj';
+  negozioID: string = '';
 
   constructor(private route: ActivatedRoute, private ordineService: OrdineService, private navExtra: NavExtrasService,  private router: Router) { }
 
@@ -29,7 +29,7 @@ export class OrdiniComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.negozioID = this.navExtra.getNegozio();
     this.ordineService.getOrdini().subscribe(res => {
       res.forEach(element => {
         if(element.id_negozio == this.negozioID){

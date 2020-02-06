@@ -9,8 +9,17 @@ export class NavExtrasService {
 
     extras: any;
     prodotti: ProdottoOrdine[];
+    negozio: string;
 
       constructor() { }
+
+      public setNegozio(negozio) {
+        this.negozio = negozio;
+      }
+
+      public getNegozio() {
+        return this.negozio;
+      }
 
       public setProdotti(prodotti) {
         this.prodotti = prodotti;
