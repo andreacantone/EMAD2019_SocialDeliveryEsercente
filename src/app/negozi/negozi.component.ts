@@ -42,9 +42,6 @@ export class NegoziComponent implements OnInit{
   }
 
 
-
-
-
   aggiungiNegozio(){
 
     const navigationExtras: NavigationExtras = {

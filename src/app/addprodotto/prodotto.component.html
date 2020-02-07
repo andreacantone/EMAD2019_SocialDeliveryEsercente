@@ -37,7 +37,7 @@
 
           <div class="form-group">
             <label>Mezzo di trasporto</label>
-              <input type='text'  placeholder="Auto, Camion, Motorino" class="form-control" formControlName="mezzo">
+              <input type='text'  placeholder="Auto, Bicicletta, Camion, Motorino" class="form-control" formControlName="mezzo">
             <ng-container *ngFor="let validation of validation_messages.mezzo">
               <mat-error *ngIf="form.get('mezzo').hasError(validation.type) && (form.get('mezzo').dirty || form.get('mezzo').touched)">{{validation.message}}</mat-error>
             </ng-container>

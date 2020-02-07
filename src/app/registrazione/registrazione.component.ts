@@ -74,7 +74,7 @@ export class RegistrazioneComponent implements OnInit {
     .then(
       res => {
         this.resetFields();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/login']);
       }
     ));
   }
