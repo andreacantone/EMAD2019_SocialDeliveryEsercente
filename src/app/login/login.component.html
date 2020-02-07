@@ -16,7 +16,7 @@
 
     <div class="form-group">
       <label>Password</label>
-      <input type='text' class="form-control"  formControlName="password" [(ngModel)]='user.password'>
+      <input type='password' class="form-control"  formControlName="password" [(ngModel)]='user.password'>
       <ng-container *ngFor="let validation of validation_messages.password">
         <mat-error  *ngIf="form.get('password').hasError(validation.type) && (form.get('password').dirty || form.get('password').touched)">{{validation.message}}</mat-error>
       </ng-container>

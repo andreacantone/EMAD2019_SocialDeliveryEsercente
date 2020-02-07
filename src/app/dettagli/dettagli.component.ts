@@ -5,6 +5,8 @@ import {ProdottoService} from '../services/prodotto.service';
 import { Ordine } from '../interface/ordine';
 import { NavExtrasService } from '../interface/NavExtraService';
 import { ProdottoOrdine } from '../interface/prodotto_ordine';
+import { Cliente } from '../interface/cliente';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
   templateUrl: './dettagli.component.html'
@@ -13,7 +15,7 @@ import { ProdottoOrdine } from '../interface/prodotto_ordine';
 export class DettagliComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-    private prodService: ProdottoService, private navExtra: NavExtrasService) {
+    private prodService: ProdottoService, private navExtra: NavExtrasService, private clienteService:ClienteService) {
 
    }
 
@@ -23,6 +25,8 @@ export class DettagliComponent implements OnInit {
   };
   prodotti: ProdottoOrdine[] = [];
   prodottiDaCaricare: Prodotto[] = [];
+  cliente:Cliente;
+  idCliente: string ='';
   prodotto: Prodotto = {
     id:null,
     nome:null,
@@ -33,6 +37,16 @@ export class DettagliComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe(async params => {
+      this.idCliente = params['idCliente'];
+      this.clienteService.getCliente(this.idCliente).subscribe(res=>{
+        this.cliente=res;
+
+      })
+
+   });
+
 
     this.route.queryParams.subscribe( async params => {
       this.prodotti = this.navExtra.getProdotti();

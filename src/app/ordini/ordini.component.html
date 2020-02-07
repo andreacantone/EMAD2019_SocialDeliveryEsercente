@@ -3,7 +3,7 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let o of ordini" (click)=listElementClicked(o)>
 
-    <p mat-line> Ordine n°: {{numero_ordine}}</p>
+    <em mat-line> Ordine </em>
     <p mat-line>Stato ordine: {{toValue(o.stato)}}</p>
     <p mat-line>Totale: {{o.totale}} € </p>
     <mat-divider></mat-divider>

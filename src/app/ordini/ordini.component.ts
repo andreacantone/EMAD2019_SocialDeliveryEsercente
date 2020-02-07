@@ -15,17 +15,24 @@ import { Prodotto } from '../interface/prodotto';
 })
 
 export class OrdiniComponent implements OnInit {
-  numero_ordine = 0;
+
   ordini: Ordine[] = [];
   prodotto: Prodotto[] = [];
   negozioID: string = '';
+
 
   constructor(private route: ActivatedRoute, private ordineService: OrdineService, private navExtra: NavExtrasService,  private router: Router) { }
 
 
   listElementClicked(ordine: Ordine) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+
+        idCliente:ordine.id_cliente
+        }
+    };
     this.navExtra.setProdotti(ordine.prodotti);
-    this.router.navigateByUrl('/dettagli');
+    this.router.navigate(['/dettagli'], navigationExtras);
   }
 
   ngOnInit() {
@@ -34,7 +41,7 @@ export class OrdiniComponent implements OnInit {
       res.forEach(element => {
         if(element.id_negozio == this.negozioID){
           this.ordini.push(element);
-          this.numero_ordine = this.numero_ordine+1;
+
         }
       });
     });
