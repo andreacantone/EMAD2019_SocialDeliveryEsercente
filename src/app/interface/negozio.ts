@@ -8,4 +8,5 @@ export interface Negozio {
   id_indirizzo?: any;
   ordini?: Ordine[];
   prodotti?: string[];
+  immagine: string;
 }

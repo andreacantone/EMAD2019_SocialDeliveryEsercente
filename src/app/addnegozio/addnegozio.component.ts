@@ -14,6 +14,7 @@ export class AddNegozioComponent implements OnInit {
 
   form: FormGroup;
   private id;
+  path = '../assets/images/big/';
 
   validation_messages = {
    'nome': [
@@ -67,6 +68,7 @@ export class AddNegozioComponent implements OnInit {
         }
     };
     value.id_esercente = this.id;
+    value.immagine = this.path + value.nome + '.jpg';
     this.negozioService.addNegozio(value)
     .then(
       res => {
